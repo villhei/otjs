@@ -9,11 +9,19 @@
 
 var Type = {
 
-    integer: (function(input) {
-        if(typeof input !== 'number') {
+    integer: function(input) {
+        if(!this.number(input)) {
             return false;
         }
         return input % 1 === 0;
-    })
+    },
+
+    number: function(input) {
+        if(typeof input !== 'number') {
+            return false;
+        }
+        return true;
+
+    }
 
 };

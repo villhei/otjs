@@ -21,3 +21,14 @@ test("Integer tests", function () {
     equal(Type.integer(null), false, "Should determine string null is not an integer");
     equal(Type.integer([]), false, "Should determine string an array is not an integer");
 });
+test("Number tests", function () {
+
+    ok(Type.number(1), "Should determine 1 is a number");
+    ok(Type.number(-1), "Should determine -1 is a number");
+    equal(Type.number(1.1), true, "Should determine 1.1 is a number");
+    equal(Type.number("1"), false, "Should determine string '1' is not a number but string");
+    equal(Type.number("abc"), false, "Should determine string 'abc' is not a number");
+    equal(Type.number("123abc"), false, "Should determine string '123abc' is not a number");
+    equal(Type.number(null), false, "Should determine string null is not a number");
+    equal(Type.number([]), false, "Should determine string an array is not a number");
+});
