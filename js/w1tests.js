@@ -32,3 +32,16 @@ test("Number tests", function () {
     equal(Type.number(null), false, "Should determine string null is not a number");
     equal(Type.number([]), false, "Should determine string an array is not a number");
 });
+test("String tests", function () {
+
+    ok(Type.string('kissa'), "Should determine that 'kissa' is a string");
+    ok(Type.string('123kissa'), "Should determine that '123kissa' is a string");
+    ok(Type.string(123 + 'kissa'), "Should determine that 123 + 'kissa' is a string");
+    equal(Type.string(123), false, "Should determine that 123 is not a string");
+    equal(Type.string(1.23), false, "Should determine that 1.23 is not a string");
+    equal(Type.string(null), false, "Should determine that null is not a string");
+    equal(Type.string(undefined), false, "Should determine that 1.23 is not a string");
+    equal(Type.string(['kissa']), false, "Should determine that an array with 'kissa' is not a string");
+
+
+});

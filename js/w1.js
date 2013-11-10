@@ -17,11 +17,18 @@ var Type = {
     },
 
     number: function(input) {
-        if(typeof input !== 'number') {
+        return this._typeOfTest('number', input);
+    },
+
+    string: function(input) {
+        return this._typeOfTest('string', input);
+    },
+
+    _typeOfTest: function(type, input) {
+        if(typeof input !== type) {
             return false;
         }
         return true;
-
     }
 
 };
