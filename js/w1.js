@@ -40,10 +40,7 @@ var Type = {
     },
 
     _typeOfTest: function(type, input) {
-        if(typeof input !== type) {
-            return false;
-        }
-        return true;
+        return typeof input === type;
     }
 
 };
