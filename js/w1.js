@@ -24,6 +24,21 @@ var Type = {
         return this._typeOfTest('string', input);
     },
 
+    intArray: function(input) {
+
+        // first we need to check if input really is an array
+        if (Object.prototype.toString.call(input) !== '[object Array]') {
+            return false;
+        }
+
+        for (var i = 0, len = input.length; i < len; i++) {
+            if (!this.integer(input[i])) {
+                return false;
+            }
+        }
+        return true;
+    },
+
     _typeOfTest: function(type, input) {
         if(typeof input !== type) {
             return false;

@@ -20,7 +20,9 @@ test("Integer tests", function () {
     equal(Type.integer("-325"), false, "Should determine string '-325' is not an integer");
     equal(Type.integer(null), false, "Should determine string null is not an integer");
     equal(Type.integer([]), false, "Should determine string an array is not an integer");
+
 });
+
 test("Number tests", function () {
 
     ok(Type.number(1), "Should determine 1 is a number");
@@ -31,7 +33,9 @@ test("Number tests", function () {
     equal(Type.number("123abc"), false, "Should determine string '123abc' is not a number");
     equal(Type.number(null), false, "Should determine string null is not a number");
     equal(Type.number([]), false, "Should determine string an array is not a number");
+
 });
+
 test("String tests", function () {
 
     ok(Type.string('kissa'), "Should determine that 'kissa' is a string");
@@ -42,6 +46,21 @@ test("String tests", function () {
     equal(Type.string(null), false, "Should determine that null is not a string");
     equal(Type.string(undefined), false, "Should determine that 1.23 is not a string");
     equal(Type.string(['kissa']), false, "Should determine that an array with 'kissa' is not a string");
+
+});
+
+test("Integer array tests", function () {
+
+    ok(Type.intArray([1]), "Should determine that [1] is an int array");
+    ok(Type.intArray([1, 2, 3]), "Should determine that [1, 2, 3] is an int array");
+    ok(Type.intArray([]), "Should determine that an empty array is an int array");
+    equal(Type.intArray('kissa'), false, "Should determine that a 'kissa' is not an int array");
+    equal(Type.intArray(1), false, "Should determine that a 1 is not an int array");
+    equal(Type.intArray([1, 2.1, 3]), false, "Should determine that [1, 2.1, 3] is not an int array");
+    equal(Type.intArray([1, 2, '3']), false, "Should determine that [1, 2, '3'] is not an int array");
+    equal(Type.intArray([null, 2, 3]), false, "Should determine that [null, 2, 3'] is not an int array");
+    equal(Type.intArray([1, undefined, 3]), false, "Should determine that [1, undefined, 3] is not an int array");
+    equal(Type.intArray([1, , 3]), false, "Should determine that [1, , 3] is not an int array");
 
 
 });
