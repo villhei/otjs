@@ -54,6 +54,8 @@ test("Integer array tests", function () {
     ok(Type.intArray([1]), "Should determine that [1] is an int array");
     ok(Type.intArray([1, 2, 3]), "Should determine that [1, 2, 3] is an int array");
     ok(Type.intArray([]), "Should determine that an empty array is an int array");
+    equal(Type.intArray(null), false, "Should determine that null is not an int array");
+    equal(Type.intArray(undefined), false, "Should determine that undefined is not an int array");
     equal(Type.intArray('kissa'), false, "Should determine that a 'kissa' is not an int array");
     equal(Type.intArray(1), false, "Should determine that a 1 is not an int array");
     equal(Type.intArray([1, 2.1, 3]), false, "Should determine that [1, 2.1, 3] is not an int array");
