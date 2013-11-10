@@ -60,7 +60,7 @@ test("Integer array tests", function () {
     equal(Type.intArray(1), false, "Should determine that a 1 is not an int array");
     equal(Type.intArray([1, 2.1, 3]), false, "Should determine that [1, 2.1, 3] is not an int array");
     equal(Type.intArray([1, 2, '3']), false, "Should determine that [1, 2, '3'] is not an int array");
-    equal(Type.intArray([null, 2, 3]), false, "Should determine that [null, 2, 3'] is not an int array");
+    equal(Type.intArray([null, 2, 3]), false, "Should determine that [null, 2, 3] is not an int array");
     equal(Type.intArray([1, undefined, 3]), false, "Should determine that [1, undefined, 3] is not an int array");
     equal(Type.intArray([1, , 3]), false, "Should determine that [1, , 3] is not an int array");
 
