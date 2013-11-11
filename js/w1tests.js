@@ -49,6 +49,18 @@ test("String tests", function () {
 
 });
 
+test("Boolean tests", function () {
+
+    ok(Type.boolean(true), "Should determine true is a boolean");
+    ok(Type.boolean(false), "Should determine false is a boolean");
+    equal(Type.boolean("true"), false, "Should determine that 'true' is not a boolean value");
+    equal(Type.boolean("false"), false, "Should determine that 'false' is not a boolean value");
+    equal(Type.boolean(null), false, "Should determine that null is not a boolean");
+    equal(Type.boolean(undefined), false, "Should determine that undefined is not a boolean");
+    equal(Type.boolean(1), false, "Should determine that an array with 'kissa' is not a string");
+
+});
+
 test("Integer array tests", function () {
 
     ok(Type.intArray([1]), "Should determine that [1] is an int array");
