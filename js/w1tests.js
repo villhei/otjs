@@ -57,7 +57,8 @@ test("Boolean tests", function () {
     equal(Type.boolean("false"), false, "Should determine that 'false' is not a boolean value");
     equal(Type.boolean(null), false, "Should determine that null is not a boolean");
     equal(Type.boolean(undefined), false, "Should determine that undefined is not a boolean");
-    equal(Type.boolean(1), false, "Should determine that an array with 'kissa' is not a string");
+    equal(Type.boolean(1), false, "Should determine that an array with 1 is not a boolean");
+    equal(Type.boolean(0), false, "Should determine that an array with 1 is not a boolean");
 
 });
 
