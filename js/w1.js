@@ -50,7 +50,7 @@ var Type = {
             if (Object.prototype.toString.call(inputArray) !== '[object Array]') {
                 return false;
             }
-            this._testArrayElementsWith(testFunction, inputArray);
+            return this._testArrayElementsWith(testFunction, inputArray);
         },
 
         _testArrayElementsWith:function (testFunction, inputArray) {
