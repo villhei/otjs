@@ -78,3 +78,18 @@ test("Integer array tests", function () {
     equal(Type.intArray([1, , 3]), false, "Should determine that [1, , 3] is not an int array");
 
 });
+
+test("Number array tests", function () {
+
+    ok(Type.numberArray([1]), "Should determine that [1] is a number array");
+    ok(Type.numberArray([1, 2.0, 3]), "Should determine that [1, 2.0, 3] is a number array");
+    ok(Type.numberArray([]), "Should determine that an empty array is a number array");
+    equal(Type.numberArray(null), false, "Should determine that null is not a number array");
+    equal(Type.numberArray(undefined), false, "Should determine that undefined is not a number array");
+    equal(Type.numberArray([1, 2.1, 3]), true, "Should determine that [1, 2.1, 3] is a number array");
+    equal(Type.numberArray([1, 2, '3']), false, "Should determine that [1, 2, '3'] is a number array");
+    equal(Type.numberArray([null, 2, 3]), false, "Should determine that [null, 2, 3] is not a number array");
+    equal(Type.numberArray([1, undefined, 3]), false, "Should determine that [1, undefined, 3] is not a number array");
+    equal(Type.numberArray([1, , 3]), false, "Should determine that [1, , 3] is not a number array");
+
+});
