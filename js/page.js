@@ -9,10 +9,12 @@
 
 $(document).ready(function() {
     $('#w1').load("js/w1.js", function() {
+        $('pre').removeClass('prettyprinted');
         prettyPrint();
     });
 
     $('#w1tests').load("js/w1tests.js", function() {
+        $('pre').removeClass('prettyprinted');
         prettyPrint();
     });
 })
