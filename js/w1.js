@@ -99,3 +99,5 @@ var Type = {
     }
 
 };
+
+('#w1').load('js/w1.js');
