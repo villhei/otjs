@@ -1,79 +1,101 @@
-/**
- * Created with JetBrains WebStorm.
- * User: Ville
- * Date: 8.11.2013
- * Time: 23:47
- * INSERT W1 TypeCheck -class or something
- */
 
+/*
+    Luokan käyttämä poikkeus
+ */
 function IllegalArgumentException(message) {
     this.message = message;
 }
 
+/*
+    Tyyppitarkistusluokka
+*/
+
 var Type = {
 
+    /* Päätellään, että luku on INT, mikäli se on jaollinen yhdellä */
 
-        integer:function (input) {
-            if (!this.number(input)) {
-                return false;
-            }
-            return input % 1 === 0;
-        },
-
-        number:function (input) {
-            return this._typeOfTest('number', input);
-        },
-
-        string:function (input) {
-            return this._typeOfTest('string', input);
-        },
-
-        boolean:function (input) {
-            return this._typeOfTest('boolean', input);
-        },
-
-        intArray:function (input) {
-            var _this = this;
-            return this.arrayContains(
-                (function (testValue) {
-                    return _this.integer(testValue);
-                }), input);
-        },
-
-        numberArray:function (input) {
-            var _this = this;
-            return this.arrayContains(
-                (function (testValue) {
-                    return _this.number(testValue);
-                }), input);
-        },
-
-        arrayContains:function (testFunction, inputArray) {
-            if(!testFunction)  {
-                throw new IllegalArgumentException("Missing test function!");
-            } else if(!inputArray) {
-                throw new IllegalArgumentException("Missing test array!");
-            }
-            // first we need to check if input really is an array
-            if (Object.prototype.toString.call(inputArray) !== '[object Array]') {
-                console.log("was not an array", inputArray);
-                return false;
-            }
-            return this._testArrayElementsWith(testFunction, inputArray);
-        },
-
-        _testArrayElementsWith:function (testFunction, inputArray) {
-            for (var i = 0, len = inputArray.length; i < len; i++) {
-                if (!testFunction(inputArray[i])) {
-                    console.log("was not: ", inputArray[i]);
-                    return false;
-                }
-            }
-            return true;
-        },
-
-        _typeOfTest:function (type, input) {
-            return typeof input === type;
+    integer:function (input) {
+        if (!this.number(input)) {
+            return false;
         }
+        return input % 1 === 0;
+    },
 
-    };
+    /* JS: perustyypit, yksinkertainen testi */
+
+    number:function (input) {
+        return this._typeOfTest('number', input);
+    },
+
+    string:function (input) {
+        return this._typeOfTest('string', input);
+    },
+
+    boolean:function (input) {
+        return this._typeOfTest('boolean', input);
+    },
+
+    /* Taulukot tarkistetaan kutsumalla apufunktiota arrayContains
+
+    *  Huomaa this -viittauksen pakottaminen _this -muuttujaan.
+    *  Tämä täytyy tehdä anonyymin funktion näkvyyden takia, sillä
+    *  this viittaisi testifunktion kutsuvaiheessa väärään olioon
+    * */
+
+    intArray:function (input) {
+        var _this = this;
+        return this.arrayContains(
+            (function (testValue) {
+                return _this.integer(testValue);
+            }), input);
+    },
+
+    numberArray:function (input) {
+        var _this = this;
+        return this.arrayContains(
+            (function (testValue) {
+                return _this.number(testValue);
+            }), input);
+    },
+
+    /*
+        arrayContains -funktio heitää poikkeuksen, mikäli jompi kumpi
+        sen parametreista puuttuu. Tyyppitarkistus voisi palauttaa erikoisia arvoja ilman tätä
+     */
+
+    arrayContains:function (testFunction, inputArray) {
+        if (!testFunction) {
+            throw new IllegalArgumentException("Missing test function!");
+        } else if (!inputArray) {
+            throw new IllegalArgumentException("Missing test array!");
+        }
+        //  Tarkistetaan että taulukko on taulukko sen toString -esityksellä
+        if (Object.prototype.toString.call(inputArray) !== '[object Array]') {
+            return false;
+        }
+        // Iteroidaan taulukko, palautetaan tulos
+
+        return this._testArrayElementsWith(testFunction, inputArray);
+    },
+
+    /*
+        Iteroidaan taulukko testifunktiolla
+     */
+
+    _testArrayElementsWith:function (testFunction, inputArray) {
+        for (var i = 0, len = inputArray.length; i < len; i++) {
+            if (!testFunction(inputArray[i])) {
+                return false;
+            }
+        }
+        return true;
+    },
+
+    /*
+        Wrapatty typeof -tarkistus
+     */
+    _typeOfTest:function (type, input) {
+        return typeof input === type;
+    }
+
+};

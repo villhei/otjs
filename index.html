@@ -18,7 +18,7 @@
 
 <ul>
     <li><a href="w1tests.html">Vaatimukset (qUnit)</a></li>
-    <li>Koodi</li>
+    <li><a href="js/w1.js">Koodi</a></li>
 </ul>
 <section>
     <header>
@@ -32,11 +32,17 @@
         <ul>
             <li>Tyyppitarkastukset olisi syytä suorittaa kaikissa funktioissa, jotka vastaanottavat parametreja</li>
             <li>Tarkastus tulisi suorittaa heti funktion ensimmäisenä käskynä</li>
+            <li>Tyyppitarkistusluokan tulee heittää ainakin taulukoiden yhteydessä poikkeukset puuttuvista parametreistä, sillä luokan toiminta ei ole kovin johdonmukaista ilman niitä</li>
+            <li>Muita tyyppejä kuin perustyyppejä (JS:n nimetyt luokat) ei ole mielekästä tarkistaa, sillä niiden kirjo on suuri ja niiden validiuden voi tarkistaa instanceOf() metodilla</li>
         </ul>
+        <section id="w1">
+
+        </section>
     </article>
 </section>
 
 <script type="text/javascript" src="lib/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
 
 
 </body>
