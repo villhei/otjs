@@ -67,8 +67,6 @@ test("Integer array tests", function () {
     ok(Type.intArray([1]), "Should determine that [1] is an int array");
     ok(Type.intArray([1, 2, 3]), "Should determine that [1, 2, 3] is an int array");
     ok(Type.intArray([]), "Should determine that an empty array is an int array");
-    equal(Type.intArray(null), false, "Should determine that null is not an int array");
-    equal(Type.intArray(undefined), false, "Should determine that undefined is not an int array");
     equal(Type.intArray('kissa'), false, "Should determine that a 'kissa' is not an int array");
     equal(Type.intArray(1), false, "Should determine that a 1 is not an int array");
     equal(Type.intArray([1, 2.1, 3]), false, "Should determine that [1, 2.1, 3] is not an int array");
@@ -77,6 +75,16 @@ test("Integer array tests", function () {
     equal(Type.intArray([1, undefined, 3]), false, "Should determine that [1, undefined, 3] is not an int array");
     equal(Type.intArray([1, , 3]), false, "Should determine that [1, , 3] is not an int array");
 
+    throws(
+        function () {
+            Type.intArray(null)
+        }, IllegalArgumentException, "Should throw an IllegalArgumentException");
+
+    throws(
+        function () {
+            Type.intArray(undefined)
+        }, IllegalArgumentException, "Should throw an IllegalArgumentException");
+
 });
 
 test("Number array tests", function () {
@@ -84,12 +92,43 @@ test("Number array tests", function () {
     ok(Type.numberArray([1]), "Should determine that [1] is a number array");
     ok(Type.numberArray([1, 2.0, 3]), "Should determine that [1, 2.0, 3] is a number array");
     ok(Type.numberArray([]), "Should determine that an empty array is a number array");
-    equal(Type.numberArray(null), false, "Should determine that null is not a number array");
-    equal(Type.numberArray(undefined), false, "Should determine that undefined is not a number array");
     equal(Type.numberArray([1, 2.1, 3]), true, "Should determine that [1, 2.1, 3] is a number array");
     equal(Type.numberArray([1, 2, '3']), false, "Should determine that [1, 2, '3'] is a number array");
     equal(Type.numberArray([null, 2, 3]), false, "Should determine that [null, 2, 3] is not a number array");
     equal(Type.numberArray([1, undefined, 3]), false, "Should determine that [1, undefined, 3] is not a number array");
     equal(Type.numberArray([1, , 3]), false, "Should determine that [1, , 3] is not a number array");
+
+    throws(
+        function () {
+            Type.numberArray(null)
+        }, IllegalArgumentException,  "Should throw an IllegalArgumentException");
+
+    throws(
+        function () {
+            Type.numberArray(undefined)
+        }, IllegalArgumentException, "Should throw an IllegalArgumentException");
+
+});
+
+test("String and other typed arrays", function () {
+
+    equal(Type.arrayContains((function (input) {
+        return Type.string(input)
+    }), ["abc", "foo", "bar"]), true, "Should determine that 'abc','foo','bar' is an array of Strings");
+    equal(Type.arrayContains((function (input) {
+        return Type.string(input)
+    }), ["abc", 1, "bar"]), false, "Should determine that 'abc',1,'bar' is NOT an array of Strings");
+
+    throws(
+        function () {
+            Type.arrayContains(undefined)
+        }, IllegalArgumentException, "Should throw an IllegalArgumentException");
+
+    throws(
+        function () {
+            Type.arrayContains((function (input) {
+                return Type.string(input)
+            }), undefined)
+        }, IllegalArgumentException, "Should throw an IllegalArgumentException");
 
 });

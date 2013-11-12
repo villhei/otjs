@@ -6,8 +6,12 @@
  * INSERT W1 TypeCheck -class or something
  */
 
+function IllegalArgumentException(message) {
+    this.message = message;
+}
 
 var Type = {
+
 
         integer:function (input) {
             if (!this.number(input)) {
@@ -45,9 +49,14 @@ var Type = {
         },
 
         arrayContains:function (testFunction, inputArray) {
-
+            if(!testFunction)  {
+                throw new IllegalArgumentException("Missing test function!");
+            } else if(!inputArray) {
+                throw new IllegalArgumentException("Missing test array!");
+            }
             // first we need to check if input really is an array
             if (Object.prototype.toString.call(inputArray) !== '[object Array]') {
+                console.log("was not an array", inputArray);
                 return false;
             }
             return this._testArrayElementsWith(testFunction, inputArray);
@@ -56,6 +65,7 @@ var Type = {
         _testArrayElementsWith:function (testFunction, inputArray) {
             for (var i = 0, len = inputArray.length; i < len; i++) {
                 if (!testFunction(inputArray[i])) {
+                    console.log("was not: ", inputArray[i]);
                     return false;
                 }
             }
