@@ -8,6 +8,7 @@
 
 
 $(document).ready(function() {
-    $('#w1').load("js/w1.js");
-    prettyPrint();
+    $('#w1').load("js/w1.js", function() {
+        prettyPrint();
+    });
 })
