@@ -1,10 +1,3 @@
-/**
- * Created with JetBrains WebStorm.
- * User: Ville
- * Date: 10.9.2013
- * Time: 15:55
- * To change this template use File | Settings | File Templates.
- */
 
 test("Integer tests", function () {
 
