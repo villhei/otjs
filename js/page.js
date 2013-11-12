@@ -11,4 +11,8 @@ $(document).ready(function() {
     $('#w1').load("js/w1.js", function() {
         prettyPrint();
     });
+
+    $('#w1tests').load("js/w1tests.js", function() {
+        prettyPrint();
+    });
 })
