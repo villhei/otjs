@@ -17,4 +17,9 @@ $(document).ready(function() {
         $('pre').removeClass('prettyprinted');
         prettyPrint();
     });
+
+	$('#w2').load("js/w2.js", function() {
+		$('pre').removeClass('prettyprinted');
+		prettyPrint();
+	})
 })
