@@ -58,6 +58,13 @@ var Type = {
             }), input);
     },
 
+    array:function(input) {
+        if (Object.prototype.toString.call(input) !== '[object Array]') {
+            return false;
+        }
+        return true;
+    },
+
     /*
         arrayContains -funktio heitää poikkeuksen, mikäli jompi kumpi
         sen parametreista puuttuu. Tyyppitarkistus voisi palauttaa erikoisia arvoja ilman tätä
@@ -70,7 +77,7 @@ var Type = {
             throw new IllegalArgumentException("Missing test array!");
         }
         //  Tarkistetaan että taulukko on taulukko sen toString -esityksellä
-        if (Object.prototype.toString.call(inputArray) !== '[object Array]') {
+        if (!this.array(inputArray)) {
             return false;
         }
         // Iteroidaan taulukko, palautetaan tulos

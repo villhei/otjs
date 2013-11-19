@@ -5,7 +5,8 @@
     <meta charset="utf-8"></meta>
     <link rel="stylesheet" href="css/desert.css">
     <link rel="stylesheet" href="css/page.css">
-
+    <script type="text/javascript" src="js/w1.js"></script>
+    <script type="text/javascript" src="js/w2.js"></script>
 </head>
 <body>
 <h1>Jäsenet, ryhmä Heikkinen</h1>
@@ -22,9 +23,10 @@
 <ul>
     <li><a href="w1tests.html">Vaatimukset (qUnit)</a></li>
     <li><a href="js/w1.js">Koodi</a></li>
+
 </ul>
 <blockquote>
-    <section>
+    <section class="weekly">
         <header>
             <h3>Viikko 1</h3>
         </header>
@@ -52,14 +54,16 @@
             </div>
         </article>
     </section>
-	<section>
+    <section class="weekly">
         <header>
             <h3>Viikko 2 </h3>
         </header>
         <article>
             <p>Kaksoisparadigma, ohjelmointityylit, sulkeumat:</p>
             <ul>
-                <li>JavaScriptillä on hyvä kirjoittaa koodia, joka sekoittaa sekä funktionaalista että perinteistä ohjelmointityyilä</li>
+                <li>JavaScriptillä on hyvä kirjoittaa koodia, joka sekoittaa sekä funktionaalista että perinteistä
+                    ohjelmointityyilä
+                </li>
             </ul>
             <div class="row">
             <pre class="prettyprint code-half-page">
@@ -67,6 +71,41 @@
                 </code>
             </pre>
             <pre class="prettyprint code-half-page">
+                <code id="w2run">
+
+                    var numbersArray = [1, 2, 3, 4, 5, 6, 7, 8];
+                    var afterAddition = map(function (x) { return x + 1 }, numbersArray);
+                    var afterMultiply = map(function (x) { return x * 2}, numbersArray);
+
+                    <script>
+                        var numbersArray = [1, 2, 3, 4, 5, 6, 7, 8];
+                        var afterAddition = map(function (x) {
+                            return x + 1;
+                        }, numbersArray);
+                        var afterMultiply = map(function (x) {
+                            return x * 2;
+                        }, numbersArray);
+                    </script>
+                    // Lisätään +1
+                    <script>
+                        document.write(afterAddition);
+                    </script>
+                    // Kerrotaan *2
+                    <script>
+                        document.write(afterMultiply);
+                    </script>
+
+                    var exNestedArray = [["one", "two"], ["foo", "bar"]];
+                    forEach(exNestedArray, concatenate);
+
+                    // Sisäkkäisten taulukoiden konkatenaatio
+                    <script>
+                        var exNestedArray = [
+                            ["one", "two"],
+                            ["foo", "bar"]
+                        ];
+                        document.write(forEach(exNestedArray, concatenate));
+                    </script>
                 </code>
             </pre>
             </div>
