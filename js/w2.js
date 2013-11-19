@@ -1,4 +1,13 @@
 /*
+ Esimerkki JavaScript-tyylisestä virhekäsittelystä
+ */
+
+function ArrayError(message) {
+    this.message = message;
+}
+ArrayError.prototype = new Error();
+
+/*
 	Esimerkki väljien tyyppiparametrien käytöstä
 */
 
@@ -22,20 +31,30 @@ function concatenate() {
  */
 
 function throwArrayError(errValue) {
-    throw new TypeError("Input is not an array: " + errValue);
+    throw new ArrayError("Input is not an array: " + errValue);
+}
+
+function functionError(errValue) {
+        throw new TypeError("Parameter was not a function: "+ errValue);
 }
 
 function forEach(array, targetFunction) {
     if(!Type.array(array)) {
-        throwArrayError();
+        throwArrayError(array);
+    }
+    if(!Type.isFunction(targetFunction)) {
+        functionError(targetFunction);
     }
     for(var i = 0, len = array.length; i < len ; ++i) {
-        targetFunction.apply(null, [array[i]]);    }
+        targetFunction.apply(null, [array[i], i]);    }
 }
 
 function map(targetFunction, array) {
     if(!Type.array(array)) {
-        throwArrayError();
+        throwArrayError(array);
+    }
+    if(!Type.isFunction(targetFunction)) {
+        functionError(targetFunction);
     }
     var result = [];
     forEach(array, function(element) {
@@ -45,10 +64,3 @@ function map(targetFunction, array) {
 }
 
 
-
-var exampleObject = {
-	type: "example",
-	name: "exampleObject"
-}
-
-var exNestedArray = [["one", "two"], ["foo", "bar"]];

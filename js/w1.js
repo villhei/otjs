@@ -1,14 +1,13 @@
-
 /*
-    Luokan käyttämä poikkeus
+ Luokan käyttämä poikkeus
  */
 function IllegalArgumentException(message) {
     this.message = message;
 }
 
 /*
-    Tyyppitarkistusluokka
-*/
+ Tyyppitarkistusluokka
+ */
 
 var Type = {
 
@@ -37,10 +36,10 @@ var Type = {
 
     /* Taulukot tarkistetaan kutsumalla apufunktiota arrayContains
 
-    *  Huomaa this -viittauksen pakottaminen _this -muuttujaan.
-    *  Tämä täytyy tehdä anonyymin funktion näkvyyden takia, sillä
-    *  this viittaisi testifunktion kutsuvaiheessa väärään olioon
-    * */
+     *  Huomaa this -viittauksen pakottaminen _this -muuttujaan.
+     *  Tämä täytyy tehdä anonyymin funktion näkvyyden takia, sillä
+     *  this viittaisi testifunktion kutsuvaiheessa väärään olioon
+     * */
 
     intArray:function (input) {
         var _this = this;
@@ -58,16 +57,20 @@ var Type = {
             }), input);
     },
 
-    array:function(input) {
+    array:function (input) {
         if (Object.prototype.toString.call(input) !== '[object Array]') {
             return false;
         }
         return true;
     },
 
+    isFunction: function(input) {
+    return !!(input && input.constructor && input.call && input.apply);
+    },
+
     /*
-        arrayContains -funktio heitää poikkeuksen, mikäli jompi kumpi
-        sen parametreista puuttuu. Tyyppitarkistus voisi palauttaa erikoisia arvoja ilman tätä
+     arrayContains -funktio heitää poikkeuksen, mikäli jompi kumpi
+     sen parametreista puuttuu. Tyyppitarkistus voisi palauttaa erikoisia arvoja ilman tätä
      */
 
     arrayContains:function (testFunction, inputArray) {
@@ -86,7 +89,7 @@ var Type = {
     },
 
     /*
-        Iteroidaan taulukko testifunktiolla
+     Iteroidaan taulukko testifunktiolla
      */
 
     _testArrayElementsWith:function (testFunction, inputArray) {
@@ -99,7 +102,7 @@ var Type = {
     },
 
     /*
-        Wrapatty typeof -tarkistus
+     Wrapatty typeof -tarkistus
      */
     _typeOfTest:function (type, input) {
         return typeof input === type;

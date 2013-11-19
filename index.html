@@ -62,7 +62,21 @@
             <p>Kaksoisparadigma, ohjelmointityylit, sulkeumat:</p>
             <ul>
                 <li>JavaScriptillä on hyvä kirjoittaa koodia, joka sekoittaa sekä funktionaalista että perinteistä
-                    ohjelmointityyilä
+                    ohjelmointityyliä. Funktionaalisella koodilla on mahdollista tuottaa hyvin tiiviitä ja atomisia
+                    funktioita, jotka säästävät kirjoittamiselta ja pelastavat pandoja pitkällä tehtäimellä. Ks. esimerkit
+                    hyvin tiiviistä forEach ja map -kutsuista
+                </li>
+                <li>
+                    Tiivis koodityyli yhdistettynä virhekäsittelyyn helpottaa myöskin. Hyödynnämme esimerkiksi forEach-
+                    ja map-funktioissa viime viikon tyyppitarkistuskirjastoa, jota on laajennettu hieman tukemaan myös
+                    funktioiden tyyppitarkistusta hyvin tehokkaalla tavalla. <br><br>
+                    Virheenkäsittely pitäisi aina hoitaa "periyttämällä" virhetyypit Error-objektista, sillä kaikki
+                    eri JavaScript-tulkit osaavat virhekäsittelyn Try-catch -blockeissa tämän objektin instansseille.
+                    Virheitä voi antaa myös ilman Error-objektia, throw "this is an error", mutta se ei ole kovin suositeltavaa
+                    Internet Explorerin ymmärryksen takia.<br><br>
+                    Myös JavaScriptiin pätee: throw early, catch late. Ts. kaappaa virheet mahdollisimman matalalla tasolla
+                    kutsuketjuja saadaksesi mahdollisimman yksinkertaisen virheenkäsittelyrakenteen, heitä virheet heti kun
+                    niitä kohdataan. Tämä ohjaa koodin rakennetta järkevään suuntaan.
                 </li>
             </ul>
             <div class="row">
@@ -96,15 +110,73 @@
                     </script>
 
                     var exNestedArray = [["one", "two"], ["foo", "bar"]];
-                    forEach(exNestedArray, concatenate);
+
+                    // Tulosta jokainen taulukon elementti
+                    forEach(exNestedArray, function(elem, index) { document.write(index + ": " + elem + " ")});
+                   <script>
+                       var exNestedArray = [
+                           ["one", "two"],
+                           ["foo", "bar"]
+                       ];
+                       forEach(exNestedArray, function(elem, index) { document.write(index + ": " + elem + " ")});
+                    </script>
 
                     // Sisäkkäisten taulukoiden konkatenaatio
+                    exNestedArray = map(concatenate, exNestedArray);
                     <script>
-                        var exNestedArray = [
-                            ["one", "two"],
-                            ["foo", "bar"]
-                        ];
-                        document.write(forEach(exNestedArray, concatenate));
+                       exNestedArray = map(concatenate, exNestedArray);
+                       document.write(exNestedArray);
+
+                    </script>
+
+                    // Virhekäsittelyä
+                    try {
+                       map(concatenate, {1:"isnotanarray", 2:"isnotanarrayvalue"});
+                    } catch(error) {
+                        if(ex instanceof ArrayError) {
+                            document.write("Caught an ArrayError: " + error.message);
+                        } else {
+                            document.write("Caught something else: " + error.message);
+                        }
+                    }
+                    // Virhekäsittelyä
+                    try {
+                        map(1+1, exNestedArray);
+                    } catch(error) {
+                        if(ex instanceof ArrayError) {
+                            document.write("Caught an ArrayError: " + error.message);
+                        } else {
+                            document.write("Caught something else: " + error.message);
+                        }
+                    }
+
+
+                    // Pitäisi kaapata ArrayError
+                    <script>
+                        try {
+                            map(concatenate, {1:"isnotanarray", 2:"isnotanarrayvalue"});
+                        } catch(error) {
+                            if(error instanceof ArrayError) {
+                                document.write("Caught an ArrayError: " + error.message);
+                            } else {
+                                document.write("Caught something else: " + error.message);
+                            }
+                        }
+
+                    </script>
+
+                    // Pitäisi tuottaa TypeError
+                    <script>
+                        try {
+                            map(1+1, exNestedArray);
+                        } catch(error) {
+                            if(error instanceof ArrayError) {
+                                document.write("Caught an ArrayError: " + error.message);
+                            } else {
+                                document.write("Caught something else: " + error.message);
+                            }
+                        }
+
                     </script>
                 </code>
             </pre>
