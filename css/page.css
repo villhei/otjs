@@ -4,3 +4,8 @@
     float: left;
     margin: 5pt;
 }
+
+.weekly {
+    width: 100%;
+    display: inline-block;
+}
