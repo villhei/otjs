@@ -78,6 +78,13 @@
                     kutsuketjuja saadaksesi mahdollisimman yksinkertaisen virheenkäsittelyrakenteen, heitä virheet heti kun
                     niitä kohdataan. Tämä ohjaa koodin rakennetta järkevään suuntaan.
                 </li>
+                <li>
+´               Sulkeuma on ensiluokkainen funktio, jolla on vapaita muuttujia sidottuna ympäristöönsä.
+                Tähän alueeseen se on myös itse sidottu, ja sen muuttujat ovat olemassa ainakin yhtä pitkään kuin sulkeuma itse.
+                Käytännössä ja helpommin ilmaistuna sulkeuma on siis funktio, joka on määritelty toisen näkyvyysalueen sisällä, josta pääsee muokkaamaan muuttujia ulommassa näkyvyysalueessa. Sulkeumat ovat hyödyllisiä mm. callback funktioissa. Esimerkiksi onClick.<br><br>
+                Jos taas sulkeumafunktio päättyy, mutta itse sulkeuman muuttujat säilyvät on kyseessä eräänlainen kapselointi. Tällöin näihin funktion luomiin sulkeumamuuttujiin voidaan päästä käsiksi muuttujakohtaisilla "aksessori"funktioilla. 
+
+                </li>
             </ul>
             <div class="row">
             <pre class="prettyprint code-half-page">
@@ -177,6 +184,23 @@
                             }
                         }
 
+                    </script>
+
+                    // Sulkeumista a)
+                    <script>
+
+                    setAlarm();
+                    </script>
+                    // Sulkeumista b)
+                    <script>
+                    var a = Person();
+                    var b = Person();
+                    write(a.getName);
+                    a.setName("Riki Sorsa");
+                    a.oneUp();
+                    a.oneUp();
+                    a.print();
+                    b.print();
                     </script>
                 </code>
             </pre>

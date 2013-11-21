@@ -63,4 +63,34 @@ function map(targetFunction, array) {
     return result;
 }
 
+/*
+ Esimerkki sulkeumaan suljettujen vapaiden muuttujien säilymisestä sulkeuman suorituksen jälkeiseen aikaan.
+*/
+function setAlarm() {
+  var message = "Herätys", var timeout = "20";
+  // Määritellään käsittely sulkeumassa
+  function handle() {
+    message = "Herää";
+    write(message+" senkin pahvi!");
+  }
 
+  setTimeout(handle, timeout);
+}
+
+/*
+Sulkeumaa voidaan käyttää myös "oliotehtaiden" rakentamisessa. Sulkeumafunktioiden suorittamisen jälkeen sulkeumaan jää
+muistiin sen muuttujien arvot.
+*/
+
+function Person() {
+    var name = "Generic George", age=0;
+
+    return {
+        getName: function() {return name},
+        setName: function(newName) {name = newName;},
+        getAge: function() {return age},
+        oneUp: function() {age++},
+        print: function() {write("My name is "+name+" and I just turned "+age)}
+
+    }
+}
