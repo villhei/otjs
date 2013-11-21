@@ -67,11 +67,11 @@ function map(targetFunction, array) {
  Esimerkki sulkeumaan suljettujen vapaiden muuttujien säilymisestä sulkeuman suorituksen jälkeiseen aikaan.
 */
 function setAlarm() {
-  var message = "Herätys", var timeout = "20";
+  var message = "Herätys", timeout = "20";
   // Määritellään käsittely sulkeumassa
   function handle() {
     message = "Herää";
-    write(message+" senkin pahvi!");
+    console.log(message+" senkin pahvi!");
   }
 
   setTimeout(handle, timeout);
@@ -90,7 +90,23 @@ function Person() {
         setName: function(newName) {name = newName;},
         getAge: function() {return age},
         oneUp: function() {age++},
-        print: function() {write("My name is "+name+" and I just turned "+age)}
+        print: function() {document.write("My name is "+name+" and I just turned "+age)}
 
     }
 }
+
+/*
+	Sulkeumaa hyödyntäen toteutettu globaali Counter-singleton
+*/
+
+function initNewCounter() {
+    var count = 0;
+    function nextCount() {
+        return ++count;
+    }
+    return nextCount;
+}
+
+var counter = initNewCounter();
+
+

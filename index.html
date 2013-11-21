@@ -186,6 +186,40 @@
 
                     </script>
 
+                   // Singleton counter example
+                   function initNewCounter() {
+                        var count = 0;
+                        function nextCount() {
+                            return ++count;
+                        }
+                        return nextCount;
+                    }
+
+                   var counter = initNewCounter();
+
+                   document.write(counter());
+                   document.write(counter());
+                   document.write(counter());
+					
+					<script>
+					function initNewCounter() {
+   						var count = 0;
+    					function nextCount() {
+        					return ++count;
+    					}
+						return nextCount;
+					}
+
+					var counter = initNewCounter("foo");
+
+					document.write(counter()+", ");
+					document.write(counter()+", ");
+					document.write(counter());
+
+					</script>
+
+
+					
                     // Sulkeumista a)
                     <script>
 
@@ -195,7 +229,7 @@
                     <script>
                     var a = Person();
                     var b = Person();
-                    write(a.getName);
+                    document.write(a.getName);
                     a.setName("Riki Sorsa");
                     a.oneUp();
                     a.oneUp();
