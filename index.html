@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="css/page.css">
         <script type="text/javascript" src="js/w1.js"></script>
         <script type="text/javascript" src="js/w2.js"></script>
+        <script type="text/javascript" src="js/w1final.js"></script>
     </head>
 <body>
 
@@ -22,6 +23,7 @@
             <li><a href="#week1">Viikko1</a></li>
             <li><a href="#week2">Viikko2</a></li>
             <li><a href="#week3">Viikko3</a></li>
+            <li><a href="#week4">Viikko4</a></li>
         </ul>
     </nav>
 
@@ -243,6 +245,68 @@
             <li>Dynaamisuus (mikä tahansa objekti-instanssi on laajennettavissa)</li>
             <li>Perintäketju: olio voi periä ominaisuuksia koko "sukupuulta"</li>
         </ul>
+    </article>
+</section>
+<section class="weekly">
+    <a name="week4"></a>
+    <header>
+       <h3>Viikko 4</h3>
+    </header>
+    <article>
+      <p>Tyyppiturvallisuuden periaatteita:</p>
+        <ul>
+
+            <li>Tyyppitarkastukset olisi syytä suorittaa kaikissa funktioissa, jotka vastaanottavat parametreja</li>
+            <li>Tarkastus tulisi suorittaa heti funktion ensimmäisenä käskynä</li>
+            <li>Tyyppitarkistusluokan tulee heittää ainakin taulukoiden yhteydessä poikkeukset puuttuvista
+                parametreistä, sillä luokan toiminta ei ole kovin johdonmukaista ilman niitä
+            </li>
+            <li>Muita tyyppejä kuin perustyyppejä (JS:n nimetyt luokat) ei ole mielekästä tarkistaa, sillä niiden
+                kirjo on suuri ja niiden validiuden voi tarkistaa instanceOf() metodilla
+            </li>
+        </ul>
+    
+        <div class="row">
+            <pre class="prettyprint code-half-page">
+                <code id="w1final">
+                </code>
+            </pre>
+        </div>
+    </article>
+    <article>
+        <p>Kaksoisparadigma, ohjelmointityylit, sulkeumat:</p>
+        <ul>
+            <li>JavaScriptillä on hyvä kirjoittaa koodia, joka sekoittaa sekä funktionaalista että perinteistä
+                ohjelmointityyliä. Funktionaalisella koodilla on mahdollista tuottaa hyvin tiiviitä ja atomisia
+                funktioita, jotka säästävät kirjoittamiselta ja pelastavat pandoja pitkällä tehtäimellä. Ks. esimerkit
+                hyvin tiiviistä forEach ja map -kutsuista
+            </li>
+            <li>
+                Tiivis koodityyli yhdistettynä virhekäsittelyyn helpottaa myöskin. Hyödynnämme esimerkiksi forEach-
+                ja map-funktioissa viime viikon tyyppitarkistuskirjastoa, jota on laajennettu hieman tukemaan myös
+                funktioiden tyyppitarkistusta hyvin tehokkaalla tavalla. <br><br>
+                Virheenkäsittely pitäisi aina hoitaa "periyttämällä" virhetyypit Error-objektista, sillä kaikki
+                eri JavaScript-tulkit osaavat virhekäsittelyn Try-catch -blockeissa tämän objektin instansseille.
+                Virheitä voi antaa myös ilman Error-objektia, throw "this is an error", mutta se ei ole kovin suositeltavaa
+                Internet Explorerin ymmärryksen takia.<br><br>
+                Myös JavaScriptiin pätee: throw early, catch late. Ts. kaappaa virheet mahdollisimman matalalla tasolla
+                kutsuketjuja saadaksesi mahdollisimman yksinkertaisen virheenkäsittelyrakenteen, heitä virheet heti kun
+                niitä kohdataan. Tämä ohjaa koodin rakennetta järkevään suuntaan.
+            </li>
+            <li>
+                ´               Sulkeuma on ensiluokkainen funktio, jolla on vapaita muuttujia sidottuna ympäristöönsä.
+                Tähän alueeseen se on myös itse sidottu, ja sen muuttujat ovat olemassa ainakin yhtä pitkään kuin sulkeuma itse.
+                Käytännössä ja helpommin ilmaistuna sulkeuma on siis funktio, joka on määritelty toisen näkyvyysalueen sisällä, josta pääsee muokkaamaan muuttujia ulommassa näkyvyysalueessa. Sulkeumat ovat hyödyllisiä mm. callback funktioissa. Esimerkiksi onClick.<br><br>
+                Jos taas sulkeumafunktio päättyy, mutta itse sulkeuman muuttujat säilyvät on kyseessä eräänlainen kapselointi. Tällöin näihin funktion luomiin sulkeumamuuttujiin voidaan päästä käsiksi muuttujakohtaisilla "aksessori"funktioilla.
+
+            </li>
+        </ul>
+        <div class="row">
+            <pre class="prettyprint code-half-page">
+                <code id="w2final">
+                </code>
+            </pre>
+        </div>
     </article>
 </section>
 </blockquote>

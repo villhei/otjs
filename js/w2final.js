@@ -38,30 +38,6 @@ function functionError(errValue) {
         throw new TypeError("Parameter was not a function: "+ errValue);
 }
 
-function forEach(array, targetFunction) {
-    if(!Type.array(array)) {
-        throwArrayError(array);
-    }
-    if(!Type.isFunction(targetFunction)) {
-        functionError(targetFunction);
-    }
-    for(var i = 0, len = array.length; i < len ; ++i) {
-        targetFunction.apply(null, [array[i], i]);    }
-}
-
-function map(targetFunction, array) {
-    if(!Type.array(array)) {
-        throwArrayError(array);
-    }
-    if(!Type.isFunction(targetFunction)) {
-        functionError(targetFunction);
-    }
-    var result = [];
-    forEach(array, function(element) {
-       result.push(targetFunction(element));
-    });
-    return result;
-}
 
 /*
  Esimerkki sulkeumaan suljettujen vapaiden muuttujien säilymisestä sulkeuman suorituksen jälkeiseen aikaan.
@@ -108,5 +84,4 @@ function initNewCounter() {
 }
 
 var counter = initNewCounter();
-
 

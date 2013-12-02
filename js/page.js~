@@ -26,12 +26,4 @@ $(document).ready(function() {
 		$('pre').removeClass('prettyprinted');
 		prettyPrint();
 	})
-        $('#w2final').load("js/w2final.js", function() {
-		$('pre').removeClass('prettyprinted');
-		prettyPrint();
-	})
-        $('#w3final').load("js/w3final.js", function() {
-		$('pre').removeClass('prettyprinted');
-		prettyPrint();
-	})
 })
