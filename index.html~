@@ -274,7 +274,33 @@
         </div>
     </article>
     <article>
+        <p>Kaksoisparadigma, ohjelmointityylit, sulkeumat:</p>
+        <ul>
+            <li>JavaScriptillä on hyvä kirjoittaa koodia, joka sekoittaa sekä funktionaalista että perinteistä
+                ohjelmointityyliä. Funktionaalisella koodilla on mahdollista tuottaa hyvin tiiviitä ja atomisia
+                funktioita, jotka säästävät kirjoittamiselta ja pelastavat pandoja pitkällä tehtäimellä. Ks. esimerkit
+                hyvin tiiviistä forEach ja map -kutsuista
+            </li>
+            <li>
+                Tiivis koodityyli yhdistettynä virhekäsittelyyn helpottaa myöskin. Hyödynnämme esimerkiksi forEach-
+                ja map-funktioissa viime viikon tyyppitarkistuskirjastoa, jota on laajennettu hieman tukemaan myös
+                funktioiden tyyppitarkistusta hyvin tehokkaalla tavalla. <br><br>
+                Virheenkäsittely pitäisi aina hoitaa "periyttämällä" virhetyypit Error-objektista, sillä kaikki
+                eri JavaScript-tulkit osaavat virhekäsittelyn Try-catch -blockeissa tämän objektin instansseille.
+                Virheitä voi antaa myös ilman Error-objektia, throw "this is an error", mutta se ei ole kovin suositeltavaa
+                Internet Explorerin ymmärryksen takia.<br><br>
+                Myös JavaScriptiin pätee: throw early, catch late. Ts. kaappaa virheet mahdollisimman matalalla tasolla
+                kutsuketjuja saadaksesi mahdollisimman yksinkertaisen virheenkäsittelyrakenteen, heitä virheet heti kun
+                niitä kohdataan. Tämä ohjaa koodin rakennetta järkevään suuntaan.
+            </li>
+            <li>
+                ´               Sulkeuma on ensiluokkainen funktio, jolla on vapaita muuttujia sidottuna ympäristöönsä.
+                Tähän alueeseen se on myös itse sidottu, ja sen muuttujat ovat olemassa ainakin yhtä pitkään kuin sulkeuma itse.
+                Käytännössä ja helpommin ilmaistuna sulkeuma on siis funktio, joka on määritelty toisen näkyvyysalueen sisällä, josta pääsee muokkaamaan muuttujia ulommassa näkyvyysalueessa. Sulkeumat ovat hyödyllisiä mm. callback funktioissa. Esimerkiksi onClick.<br><br>
+                Jos taas sulkeumafunktio päättyy, mutta itse sulkeuman muuttujat säilyvät on kyseessä eräänlainen kapselointi. Tällöin näihin funktion luomiin sulkeumamuuttujiin voidaan päästä käsiksi muuttujakohtaisilla "aksessori"funktioilla.
 
+            </li>
+        </ul>
         <div class="row">
             <pre class="prettyprint code-half-page">
                 <code id="w2final">

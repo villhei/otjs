@@ -38,23 +38,8 @@ function functionError(errValue) {
         throw new TypeError("Parameter was not a function: "+ errValue);
 }
 
-
 /*
- Esimerkki sulkeumaan suljettujen vapaiden muuttujien säilymisestä sulkeuman suorituksen jälkeiseen aikaan.
-*/
-function setAlarm() {
-  var message = "Herätys", timeout = "20";
-  // Määritellään käsittely sulkeumassa
-  function handle() {
-    message = "Herää";
-    console.log(message+" senkin pahvi!");
-  }
-
-  setTimeout(handle, timeout);
-}
-
-/*
-Sulkeumaa voidaan käyttää myös konstruktoreissa. Sulkeumafunktioiden suorittamisen jälkeen sulkeumaan jää
+  Sulkeumaa voidaan käyttää myös konstruktoreissa. Sulkeumafunktioiden suorittamisen jälkeen sulkeumaan jää
 muistiin sen muuttujien arvot.
 */
 
@@ -72,7 +57,7 @@ function Person() {
 }
 
 /*
-	Sulkeumaa hyödyntäen toteutettu globaali Counter-singleton, jossa vapaiden muuttujien säily
+  Sulkeumaa hyödyntäen toteutettu globaali Counter-singleton, jossa vapaat muuttujat säilyvät suorituksen jälkeiseen aikaan.
 */
 
 function initNewCounter() {
