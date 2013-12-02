@@ -225,6 +225,25 @@
                         document.write(counter());
 
                     </script>
+
+
+
+                    // Sulkeumista a)
+                    <script>
+
+                        setAlarm();
+                    </script>
+                    // Sulkeumista b)
+                    <script>
+                        var a = Person();
+                        var b = Person();
+                        document.write(a.getName);
+                        a.setName("Riki Sorsa");
+                        a.oneUp();
+                        a.oneUp();
+                        a.print();
+                        b.print();
+                    </script>
                 </code>
             </pre>
         </div>
