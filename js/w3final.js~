@@ -20,12 +20,12 @@ function Product(material, cost) {
    
          this.material = material;
          this.cost = cost;
-         this.totalCost = function() { this.material*this.cost };
 }
-   
+
+/*
+Esimakua prototyypeistä.
+*/
+   Product.prototype.totalCost = function() { this.material*this.cost };
    var product = new Product(100, 50);
 
-/* 
-
-*/
 
